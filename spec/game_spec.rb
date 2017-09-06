@@ -44,8 +44,8 @@ describe Game do
     end
   end
 
-  describe '#over?' do
-    it 'returns true if all fields have been taken' do
+  context 'game ends without a winner' do
+    before do
       game.set_field(1, 1, 'X')
       game.set_field(0, 0, 'O')
       game.set_field(1, 0, 'X')
@@ -55,24 +55,44 @@ describe Game do
       game.set_field(2, 1, 'X')
       game.set_field(0, 1, 'O')
       game.set_field(2, 2, 'X')
-      expect(game.over?).to be true
     end
 
-    xit 'returns true if game has a winner' do
+    describe '#over?' do
+      it 'returns true if all fields have been taken' do
+        expect(game.over?).to be true
+      end
+    end
 
+    describe '#winner' do
+      it 'returns false if there is no winner' do
+        expect(game.winner).to be false
+      end
     end
   end
 
-  describe '#winner' do
-    it 'returns player if he wins a row' do
+  context 'game ends with a winner' do
+    before do
       game.set_field(2, 0, 'X')
       game.set_field(1, 0, 'O')
       game.set_field(2, 1, 'X')
       game.set_field(1, 1, 'O')
       game.set_field(2, 2, 'X')
-      expect(game.winner).to eq 'X'
     end
 
+    describe '#over?' do
+      it 'returns true if game has a winner' do
+        expect(game.over?).to be true
+      end
+    end
+
+    describe '#winner' do
+      it 'returns player if he wins a row' do
+        expect(game.winner).to eq 'X'
+      end
+    end
+  end
+
+  describe '#winner' do
     it 'returns player if he wins a column' do
       game.set_field(0, 2, 'O')
       game.set_field(0, 1, 'X')

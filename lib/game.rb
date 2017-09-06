@@ -14,7 +14,7 @@ class Game
   end
 
   def over?
-    grid.flatten.select { |element| element == ' ' }.empty?
+    grid.flatten.select { |element| element == ' ' }.empty? || !!winner
   end
 
   def winner
