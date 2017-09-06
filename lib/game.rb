@@ -14,7 +14,7 @@ class Game
   end
 
   def over?
-    false
+    all_fields_taken?
   end
 
   def to_s
@@ -39,5 +39,9 @@ class Game
 
   def fail_if_field_taken(row, column)
     raise 'Field has been taken' unless grid[row][column] == ' '
+  end
+
+  def all_fields_taken?
+    grid.flatten.select { |element| element == ' ' }.empty?
   end
 end

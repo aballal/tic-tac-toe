@@ -39,7 +39,7 @@ describe Game do
 
     context 'field is invalid' do
       it 'cannot set an invalid field' do
-        expect { game.set_field(3,0, 'X') }. to raise_error 'Invalid field'
+        expect { game.set_field(3, 0, 'X') }. to raise_error 'Invalid field'
       end
     end
   end
