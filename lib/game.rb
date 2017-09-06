@@ -1,9 +1,12 @@
 class Game
+  GRID_SIZE = 3
+
   def initialize
     @grid = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
   end
 
   def set_field(row, column, player)
+    fail_if_invalid_field(row, column)
     fail_if_invalid_player(player)
     fail_if_field_taken(row, column)
     @grid[row][column] = player
@@ -25,6 +28,10 @@ class Game
   private
 
   attr_reader :grid
+
+  def fail_if_invalid_field(row, column)
+    raise 'Invalid field' if row >= GRID_SIZE || column >= GRID_SIZE
+  end
 
   def fail_if_invalid_player(player)
     raise 'Invalid player' unless ['X', 'O'].include?(player)
