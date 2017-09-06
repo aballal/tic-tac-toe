@@ -18,7 +18,7 @@ class Game
   end
 
   def winner
-    grid.map do |row|
+    (grid + grid.transpose).map do |row|
       return 'X' if row.join == 'XXX'
       return 'O' if row.join == 'OOO'
     end

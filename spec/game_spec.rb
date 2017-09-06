@@ -72,5 +72,14 @@ describe Game do
       game.set_field(2, 2, 'X')
       expect(game.winner).to eq 'X'
     end
+
+    it 'returns player if he wins a column' do
+      game.set_field(0, 2, 'O')
+      game.set_field(0, 1, 'X')
+      game.set_field(1, 2, 'O')
+      game.set_field(1, 1, 'X')
+      game.set_field(2, 2, 'O')
+      expect(game.winner).to eq 'O'
+    end
   end
 end
