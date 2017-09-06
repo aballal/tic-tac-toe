@@ -43,4 +43,19 @@ describe Game do
       end
     end
   end
+
+  describe '#over?' do
+    it 'returns true if all fields have been taken' do
+      game.set_field(1, 1, 'X')
+      game.set_field(0, 0, 'O')
+      game.set_field(1, 0, 'X')
+      game.set_field(1, 2, 'O')
+      game.set_field(0, 2, 'X')
+      game.set_field(2, 0, 'O')
+      game.set_field(2, 1, 'X')
+      game.set_field(0, 1, 'O')
+      game.set_field(2, 2, 'X')
+      expect(game.over?).to be true
+    end
+  end
 end
