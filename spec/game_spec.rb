@@ -24,6 +24,10 @@ describe Game do
         game.set_field(1, 2, 'O')
         expect { puts game }.to output("   \n  O\n   \n").to_stdout
       end
+
+      it 'cannot set a field with a player other than X or O' do
+        expect { game.set_field(0, 0, '*') }.to raise_error 'Invalid player'
+      end
     end
   end
 end
