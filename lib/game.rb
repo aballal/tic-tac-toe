@@ -3,6 +3,10 @@ class Game
     @grid = empty_grid
   end
 
+  def isOver?
+    false
+  end
+
   def to_s
     grid.map do |row|
       row.map do |element|
