@@ -29,5 +29,12 @@ describe Game do
         expect { game.set_field(0, 0, '*') }.to raise_error 'Invalid player'
       end
     end
+
+    context 'field has previously been set' do
+      it 'cannot set a field that has already been set' do
+        game.set_field(0, 0, 'X')
+        expect { game.set_field(0, 0, 'O') }.to raise_error 'Field has been taken'
+      end
+    end
   end
 end
