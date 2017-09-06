@@ -8,8 +8,12 @@ describe Game do
       expect { puts game }.to output("   \n   \n   \n").to_stdout
     end
 
-    it 'says game is not over' do
+    it 'game is not over' do
       expect(game.over?).to be false
+    end
+
+    it 'game does not have a winner' do
+      expect(game.winner).to be false
     end
   end
 
