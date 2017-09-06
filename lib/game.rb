@@ -6,9 +6,9 @@ class Game
   end
 
   def set_field(row, column, player)
-    fail_if_invalid_field(row, column)
-    fail_if_invalid_player(player)
-    fail_if_field_taken(row, column)
+    raise 'Invalid field' if row >= GRID_SIZE || column >= GRID_SIZE
+    raise 'Invalid player' unless ['X', 'O'].include?(player)
+    raise 'Field has been taken' unless grid[row][column] == ' '
     @grid[row][column] = player
     nil
   end
@@ -18,7 +18,7 @@ class Game
   end
 
   def winner
-    lines.map do |row|
+    (grid + grid.transpose + diagonals).map do |row|
       return 'X' if row.join == 'XXX'
       return 'O' if row.join == 'OOO'
     end
@@ -26,32 +26,15 @@ class Game
   end
 
   def to_s
-    grid.map do |row|
-      row.map do |element|
-        element
-      end.join + "\n"
-    end.join
+    grid.map { |row| row.map { |element| element }.join + "\n" }.join
   end
 
   private
 
   attr_reader :grid
 
-  def fail_if_invalid_field(row, column)
-    raise 'Invalid field' if row >= GRID_SIZE || column >= GRID_SIZE
-  end
-
-  def fail_if_invalid_player(player)
-    raise 'Invalid player' unless ['X', 'O'].include?(player)
-  end
-
-  def fail_if_field_taken(row, column)
-    raise 'Field has been taken' unless grid[row][column] == ' '
-  end
-
-  def lines
-    primary_diagonal = (0...GRID_SIZE).collect { |i| grid[i][i] }.to_a
-    secondary_diagonal = (0...GRID_SIZE).collect { |i| grid[i][GRID_SIZE - 1 - i] }.to_a
-    grid + grid.transpose << primary_diagonal << secondary_diagonal
+  def diagonals
+    [(0...GRID_SIZE).collect { |i| grid[i][i] }.to_a,
+     (0...GRID_SIZE).collect { |i| grid[i][GRID_SIZE - 1 - i] }.to_a]
   end
 end
