@@ -57,5 +57,20 @@ describe Game do
       game.set_field(2, 2, 'X')
       expect(game.over?).to be true
     end
+
+    xit 'returns true if game has a winner' do
+
+    end
+  end
+
+  describe '#winner' do
+    it 'returns player if he wins a row' do
+      game.set_field(2, 0, 'X')
+      game.set_field(1, 0, 'O')
+      game.set_field(2, 1, 'X')
+      game.set_field(1, 1, 'O')
+      game.set_field(2, 2, 'X')
+      expect(game.winner).to eq 'X'
+    end
   end
 end

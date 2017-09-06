@@ -14,7 +14,15 @@ class Game
   end
 
   def over?
-    all_fields_taken?
+    grid.flatten.select { |element| element == ' ' }.empty?
+  end
+
+  def winner
+    grid.map do |row|
+      return 'X' if row.join == 'XXX'
+      return 'O' if row.join == 'OOO'
+    end
+    false
   end
 
   def to_s
@@ -39,9 +47,5 @@ class Game
 
   def fail_if_field_taken(row, column)
     raise 'Field has been taken' unless grid[row][column] == ' '
-  end
-
-  def all_fields_taken?
-    grid.flatten.select { |element| element == ' ' }.empty?
   end
 end
