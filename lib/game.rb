@@ -18,7 +18,7 @@ class Game
   end
 
   def winner
-    (grid + grid.transpose).map do |row|
+    lines.map do |row|
       return 'X' if row.join == 'XXX'
       return 'O' if row.join == 'OOO'
     end
@@ -47,5 +47,11 @@ class Game
 
   def fail_if_field_taken(row, column)
     raise 'Field has been taken' unless grid[row][column] == ' '
+  end
+
+  def lines
+    primary_diagonal = (0...GRID_SIZE).collect { |i| grid[i][i] }.to_a
+    secondary_diagonal = (0...GRID_SIZE).collect { |i| grid[i][GRID_SIZE - 1 - i] }.to_a
+    grid + grid.transpose << primary_diagonal << secondary_diagonal
   end
 end

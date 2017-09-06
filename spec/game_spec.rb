@@ -81,5 +81,23 @@ describe Game do
       game.set_field(2, 2, 'O')
       expect(game.winner).to eq 'O'
     end
+
+    it 'returns player if he wins the primary diagonal' do
+      game.set_field(0, 0, 'X')
+      game.set_field(0, 1, 'O')
+      game.set_field(1, 1, 'X')
+      game.set_field(2, 1, 'O')
+      game.set_field(2, 2, 'X')
+      expect(game.winner).to eq 'X'
+    end
+
+    it 'returns player if he wins the secondary diagonal' do
+      game.set_field(0, 2, 'O')
+      game.set_field(0, 1, 'X')
+      game.set_field(1, 1, 'O')
+      game.set_field(2, 1, 'X')
+      game.set_field(2, 0, 'O')
+      expect(game.winner).to eq 'O'
+    end
   end
 end
