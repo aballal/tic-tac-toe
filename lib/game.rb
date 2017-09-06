@@ -1,9 +1,14 @@
 class Game
   def initialize
-    @grid = empty_grid
+    @grid = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
   end
 
-  def isOver?
+  def set_field(row, column, symbol)
+    @grid[row][column] = symbol
+    nil
+  end
+
+  def over?
     false
   end
 
@@ -18,12 +23,4 @@ class Game
   private
 
   attr_reader :grid
-
-  def empty_grid
-    [
-      [' ', ' ', ' '],
-      [' ', ' ', ' '],
-      [' ', ' ', ' ']
-    ]
-  end
 end

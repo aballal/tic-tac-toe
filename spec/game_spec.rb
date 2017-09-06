@@ -9,7 +9,7 @@ describe Game do
     end
 
     it 'says game is not over' do
-      expect(game.isOver?).to be false
+      expect(game.over?).to be false
     end
   end
 
