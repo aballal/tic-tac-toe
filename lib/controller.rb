@@ -11,9 +11,10 @@ class Controller
   end
 
   def to_s
-    return "Game Over! Player #{game.winner} wins!" if game.over? && game.winner
-    return 'Game Over! It is a draw!' if game.over? && !game.winner
-    current_player.to_s + "\n" + game.to_s
+    data = current_player.to_s + "'s turn next\n---\n" + game.to_s + "\n---\n"
+    return data + "Game Over! Player #{game.winner} wins!" if game.over? && game.winner
+    return data + 'Game Over! It is a draw!' if game.over? && !game.winner
+    data + 'Game in progress.'
   end
 
   private

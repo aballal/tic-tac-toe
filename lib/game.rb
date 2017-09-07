@@ -26,7 +26,7 @@ class Game
   end
 
   def to_s
-    grid.map { |row| row.map { |element| element }.join + "\n" }.join
+    grid.map { |row| row.map { |element| element }.join + "\n" }.join.chomp
   end
 
   private

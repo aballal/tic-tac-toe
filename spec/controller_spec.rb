@@ -32,23 +32,25 @@ describe Controller do
     it 'displays Game Over! Player X wins! when player X wins' do
       allow(game).to receive(:over?).and_return(true)
       allow(game).to receive(:winner).and_return('X')
-      expect { print controller }.to output('Game Over! Player X wins!').to_stdout
+      expect { print controller }.to output(/Game Over! Player X wins!/).to_stdout
     end
 
     it 'displays Game Over! Player O wins! when player O wins' do
       allow(game).to receive(:over?).and_return(true)
       allow(game).to receive(:winner).and_return('O')
-      expect { print controller }.to output('Game Over! Player O wins!').to_stdout
+      expect { print controller }.to output(/Game Over! Player O wins!/).to_stdout
     end
 
     it 'displays Game Over! It is a draw! when player neither players win' do
       allow(game).to receive(:over?).and_return(true)
       allow(game).to receive(:winner).and_return(false)
-      expect { print controller }.to output('Game Over! It is a draw!').to_stdout
+      expect { print controller }.to output(/Game Over! It is a draw!/).to_stdout
     end
 
-    xit 'displays the current player and game otherwise' do
-
+    it 'displays Game in progress otherwise' do
+      allow(game).to receive(:over?).and_return(false)
+      allow(game).to receive(:winner).and_return(false)
+      expect { print controller }.to output(/Game in progress./).to_stdout
     end
   end
 end
