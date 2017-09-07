@@ -7,11 +7,11 @@ describe Controller do
 
   describe 'player going first can be set at initialisation' do
     it 'can be player X' do
-      expect { puts controller }.to output(/[X.]/).to_stdout
+      expect { puts controller }.to output(/X's turn next/).to_stdout
     end
 
     it 'can be player O' do
-      expect { puts controller_o }.to output(/[O.]/).to_stdout
+      expect { puts controller_o }.to output(/O's turn next/).to_stdout
     end
   end
 
@@ -24,7 +24,7 @@ describe Controller do
     it 'switches the player' do
       allow(game).to receive(:set_field)
       controller.execute_turn(0, 0)
-      expect { puts controller }.to output(/[O.]/).to_stdout
+      expect { puts controller }.to output(/O's turn next/).to_stdout
     end
   end
 

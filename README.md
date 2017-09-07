@@ -22,5 +22,5 @@ $ cd tic-tac-toe
 $ bundle
 ```
 
-`$ rspec` for unit tests
+`$ rspec` for unit tests  
 `$ ruby ./spec/feature_test.rb` for feature test
