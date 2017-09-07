@@ -18,12 +18,12 @@ describe Controller do
   describe '#execute_turn' do
     it 'executes a turn for the current player' do
       expect(game).to receive(:set_field).with(0, 0, 'X')
-      controller.execute_turn(0,0)
+      controller.execute_turn(0, 0)
     end
 
     it 'switches the player' do
       allow(game).to receive(:set_field)
-      controller.execute_turn(0,0)
+      controller.execute_turn(0, 0)
       expect { puts controller }.to output(/[O.]/).to_stdout
     end
   end
