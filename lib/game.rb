@@ -18,9 +18,9 @@ class Game
   end
 
   def winner
-    (grid + grid.transpose + diagonals).map do |row|
-      return 'X' if row.join == 'XXX'
-      return 'O' if row.join == 'OOO'
+    (grid + grid.transpose + diagonals).each do |row|
+      return 'X' if row.join == 'X' * GRID_SIZE
+      return 'O' if row.join == 'O' * GRID_SIZE
     end
     nil
   end
