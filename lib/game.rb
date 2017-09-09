@@ -22,7 +22,7 @@ class Game
       return 'X' if row.join == 'XXX'
       return 'O' if row.join == 'OOO'
     end
-    false
+    nil
   end
 
   def to_s

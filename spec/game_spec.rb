@@ -13,7 +13,7 @@ describe Game do
     end
 
     it 'game does not have a winner' do
-      expect(game.winner).to be false
+      expect(game.winner).to be nil
     end
   end
 
@@ -69,7 +69,7 @@ describe Game do
 
     describe '#winner' do
       it 'returns false if there is no winner' do
-        expect(game.winner).to be false
+        expect(game.winner).to be nil
       end
     end
   end
